@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8192896100616411751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8192896100616411744}
+  - component: {fileID: 8192896100616411750}
+  - component: {fileID: 8192896100616411747}
+  - component: {fileID: 8192896100616411745}
+  m_Layer: 0
+  m_Name: ScriptHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8192896100616411744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192896100616411751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 432.85214, y: 767.05707, z: -39.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8192896100616411750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192896100616411751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b4e2b707af734488f3a2f5c16a11b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object_Spawn_Holder: {fileID: 0}
+--- !u!114 &8192896100616411747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192896100616411751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1775dacb56593c646bed3363af2e36b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Grid: {fileID: 342098965096189932, guid: f97f0b0f856cf2f46a75ba38903ea959, type: 3}
+  Grid_Holder: {fileID: 0}
+  GridCount_X: 18
+  GridCount_Y: 10
+--- !u!114 &8192896100616411745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192896100616411751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0714eeab7d76e43a0dc0c59dbc3ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object_ToSpawn:
+  - {fileID: 3335323822298463993, guid: 986ab47018f179a4091bd32145c542c1, type: 3}
+  - {fileID: 342098965096189932, guid: b9594ecdc8a24754aa6013255c8d0302, type: 3}
+  - {fileID: 3335323822298463993, guid: cb7db503d98d4764ebabb9d9f38123ea, type: 3}
+  - {fileID: 3335323822298463993, guid: 7a8551a2166ac0543a6c34a4eee62eef, type: 3}
+  FileName: {fileID: 0}
+  Input: {fileID: 0}

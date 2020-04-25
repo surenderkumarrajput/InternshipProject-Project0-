@@ -7,12 +7,14 @@ public class Spawnner : MonoBehaviour
 {
     GameObject Object_Spawn;
 
-    public Transform Spawn_Point;
     public Transform Object_Spawn_Holder;
+
+    public static List<Object_Ref.Object_Info> Go_Pos = new List<Object_Ref.Object_Info>();
 
     private void Start()
     {
         Object_Spawn = null;
+        Go_Pos.Clear();
     }
 
     private void Update()
@@ -30,6 +32,7 @@ public class Spawnner : MonoBehaviour
         }
         else
         {
+            //Instantiating Objects.
             if (Input.GetMouseButtonDown(0))
             {
                 var Inputpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,6 +41,20 @@ public class Spawnner : MonoBehaviour
                 {
                     var go = Instantiate(Object_Spawn, hit.collider.GetComponent<Transform>().position, Quaternion.identity);
                     go.transform.SetParent(Object_Spawn_Holder);
+                    //Taking References
+                    var Obj=  go.GetComponent<Object_Ref>().Object_Info_Struct;
+                    //Position Reference..
+                    float X = go.transform.position.x;
+                    float Y = go.transform.position.y;
+                    Vector2 Obj_Pos = new Vector2(X, Y);
+                    //Object Type Reference
+                    Object_Type objtype = Obj.Obj_Type;
+                    //Creating new Object
+                    Object_Ref.Object_Info Obj_Info = new Object_Ref.Object_Info();
+                    //Setting Values
+                    Obj_Info.Obj_Type = objtype;
+                    Obj_Info.Object_Position = Obj_Pos;
+                    Go_Pos.Add(Obj_Info);
                 }
                 else
                 {
