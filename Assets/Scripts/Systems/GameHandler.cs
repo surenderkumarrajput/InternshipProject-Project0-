@@ -16,7 +16,6 @@ public class GameHandler : MonoBehaviour
     void Start()
     {
         SaveSystem.Inint();
-       // Spawnner_Ref = GetComponent<Spawnner>();
         if (FileName != null)
         {
             ShowSaveFiles();
