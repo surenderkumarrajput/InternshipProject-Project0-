@@ -11,9 +11,7 @@ public class GameHandler : MonoBehaviour
 
     public TextMeshProUGUI FileName;
 
-    //Spawnner Spawnner_Ref;
-
-    public InputField Input;
+    public TMP_InputField Input;
 
     void Start()
     {
@@ -28,52 +26,63 @@ public class GameHandler : MonoBehaviour
             return;
         }
     }
+
     //Save Function
     public void Save()
     {
-
         SaveObject Save_Object = new SaveObject
         {
             Save_Pos = Spawnner.Go_Pos
         };
 
         string JsonString = JsonUtility.ToJson(Save_Object);
-        SaveSystem.save(JsonString,Input.text);
-    }
-    //Load Function
-    public void Load(GameObject LoadButton)
-    {
-        string LoadString = SaveSystem.Load(Input.text);
-        if (LoadString != null)
+        if (Input.text == "")
         {
-            SaveObject Save_Object = JsonUtility.FromJson<SaveObject>(LoadString);
-            foreach (var item in Save_Object.Save_Pos)
-            {
-                if(Object_ToSpawn[0].GetComponent<Object_Ref>().Object_Info_Struct.Obj_Type==item.Obj_Type)
-                {
-                    Instantiate(Object_ToSpawn[0], new Vector2(item.Object_Position.x, item.Object_Position.y), Quaternion.identity);
-                }
-                else if (Object_ToSpawn[1].GetComponent<Object_Ref>().Object_Info_Struct.Obj_Type == item.Obj_Type)
-                {
-                    Instantiate(Object_ToSpawn[1], new Vector2(item.Object_Position.x, item.Object_Position.y), Quaternion.identity);
-                }
-                else if (Object_ToSpawn[2].GetComponent<Object_Ref>().Object_Info_Struct.Obj_Type == item.Obj_Type)
-                {
-                    Instantiate(Object_ToSpawn[2], new Vector2(item.Object_Position.x, item.Object_Position.y), Quaternion.identity);
-                }
-                else if (Object_ToSpawn[3].GetComponent<Object_Ref>().Object_Info_Struct.Obj_Type == item.Obj_Type)
-                {
-                    Instantiate(Object_ToSpawn[3], new Vector2(item.Object_Position.x, item.Object_Position.y), Quaternion.identity);
-                }
-            }
-            LoadButton.SetActive(false);
+            Debug.Log("No Name Given");
+            return;
         }
         else
         {
-            Debug.Log("No directory Found");
+            SaveSystem.Save(JsonString, Input.text);
         }
     }
-    //Funvtion that Show Saves
+
+    //Load Function
+    public void Load(GameObject LoadButton)
+    {
+            if (Input.text == "")
+            {
+                Debug.Log("No Name Given");
+                return;
+            }
+            else
+            {
+                string LoadString = SaveSystem.Load(Input.text);
+                if (LoadString != null)
+                {
+                    SaveObject Save_Object = JsonUtility.FromJson<SaveObject>(LoadString);
+                    foreach (var item in Save_Object.Save_Pos)
+                    {
+                        for (int i = 0; i < Object_ToSpawn.Length; i++)
+                        {
+                            if (Object_ToSpawn[i].GetComponent<Object_Ref>().Object_Info_Struct.Obj_Type == item.Obj_Type)
+                            {
+                                Instantiate(Object_ToSpawn[i], new Vector2(item.Object_Position.x, item.Object_Position.y), Quaternion.identity);
+                            }
+                        }
+                    }
+                    LoadButton.SetActive(false);
+                }
+          
+                else
+                {
+                    Debug.Log("No directory Found");
+                }
+            }
+       
+    }
+
+    //Function that Show Saves
     public void ShowSaveFiles()
     {
         string[] Files = Directory.GetFiles(SaveSystem.SAVE_FOLDER);
@@ -84,10 +93,11 @@ public class GameHandler : MonoBehaviour
         }
         for (int i = 0; i < FileNames.Count; i++)
         {
-             FileName.text += "\n" + FileNames[i];
+             FileName.text += FileNames[i]+"\n" ;
         }
     }
 }
+
 //Save Object or properties Class..
 public class SaveObject
 {

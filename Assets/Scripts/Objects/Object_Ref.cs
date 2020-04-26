@@ -12,6 +12,7 @@ public class Object_Ref : MonoBehaviour
     public struct Object_Info
     {
         public Object_Type Obj_Type;
+        [HideInInspector]
         public Vector2 Object_Position;
     }
     public Object_Info Object_Info_Struct;

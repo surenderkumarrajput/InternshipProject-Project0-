@@ -5,9 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Grid
-  - Objects
   - Start
   - End
+  - Coins
+  - Ground
   layers:
   - Default
   - TransparentFX

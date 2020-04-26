@@ -4,6 +4,7 @@ using System.IO;
 public static class SaveSystem 
 {
     public static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
+
     //Check if Directory Exists or not.
     public static void Inint()
     {
@@ -12,11 +13,13 @@ public static class SaveSystem
             Directory.CreateDirectory(SAVE_FOLDER);
         }
     }
+
     //Writes Data to File
-    public static void save(string Savestring,string FileName)
+    public static void Save(string Savestring,string FileName)
     {
         File.WriteAllText(SAVE_FOLDER + FileName , Savestring);
     }
+
     //Reads Data from File
     public static string Load(string FileName)
     {
